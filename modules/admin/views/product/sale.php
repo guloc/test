@@ -7,7 +7,9 @@
  <?php $form = ActiveForm::begin() ?>
  <?= $form->field($model, 'name') ?>
  <?= $form->field($model, 'price') ?>
- <?= $form->field($model, 'sale')?>
+ <i class="fa fa-solid fa-alien">
+ </i> <?= $form->field($model, 'sale')?>
+ 
  <div class="form-group">
      <div>
          <?= Html::submitButton('Добавить', ['class' => 'btn btn-success']) ?>
