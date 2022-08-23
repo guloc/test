@@ -21,6 +21,12 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
+        'test' => [
+            'class' => 'app\modules\test\Module',
+        ],
+        'adminka' => [
+            'class' => 'mdm\admin\Module',
+        ],
     ],
     'components' => [
     'request' => [
@@ -29,6 +35,9 @@ $config = [
     ],
     'cache' => [
         'class' => 'yii\caching\FileCache',
+    ],
+    'authManager' => [
+        'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
     ],
     'user' => [
         'identityClass' => 'app\models\Users',
@@ -60,6 +69,21 @@ $config = [
         'rules' => [
             ],
         ],
+    ],
+
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
+            'adminka/*',
+            'some-controller/some-action',
+            // The actions listed here will be allowed to everyone including guests.
+            // So, 'admin/*' should not appear here in the production, of course.
+            // But in the earlier stages of your development, you may probably want to
+            // add a lot of actions here until you finally completed setting up rbac,
+            // otherwise you may not even take a first step.
+        ]
     ],
     'params' => $params,
 ];
